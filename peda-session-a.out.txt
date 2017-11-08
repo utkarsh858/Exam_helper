@@ -1,0 +1,4 @@
+break /home/utkarsh858/exam/e.cpp:76
+break /home/utkarsh858/exam/e.cpp:40
+break /home/utkarsh858/exam/e.cpp:19
+
