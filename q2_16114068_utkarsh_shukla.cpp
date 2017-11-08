@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cstring>
+
 #include <sstream>
 #include <queue>
 using namespace std; 
@@ -15,7 +15,7 @@ void insert(int t){
 		else index=index*2+1;
 	}
 	tree[index]=t;
-
+	cout << "inserted at "<< index<<"  "<< tree[index]<<endl;
 }
 
 int findt(int t){
@@ -43,14 +43,17 @@ for (int i = 0; i < 10000; ++i)
 	stringstream bob(s);
 	while(bob>>temp){
 		insert(temp);
+		cout << temp << "  inserted"<<endl;
 	}
 
 	cin >> s;
 	stringstream bob2(s);
 	int node1;
+	stringstream bob3(s);
+
 	int node2;
 	bob2 >> node1;
-	bob2 >> node2;
+	bob3 >> node2;
 	
 
 	int a =findt(node1);
