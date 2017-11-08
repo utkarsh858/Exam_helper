@@ -9,20 +9,21 @@ using namespace std;
 int x1,y1,x2,y2;
 int **map;
 bool** mark;
-pair<int,int>** prev;
-queue<pair <int,int>> q;
+pair<int, int>** prev;
+queue<pair <int,int> > q;
+int rows,columns;
 
 
 void adj(int a,int b){
 
-	if(a-1<rows && a-1>0&&b<columns&&b>0&&map[a-1][b]==0) {mark[a-1][b]=true;q.push{a-1,b}}
-	if(a+1<rows&&a+1>0&&b<columns&&b>0&&map[a+1][b]==0) {mark[a+1][b]=true;q.push{a+1,b}}
-	if(a<rows&&a>0&&b-1<columns&&b-1>0&&map[a][b-1]==0) {mark[a][b-1]=true;q.push{a,b-1}}
-	if(a<rows&&a>0&&b+1<columns&&b+1>0&&map[a][b+1]==0) {mark[a][b+1]=true;q.push{a,b+1}}
-	if(a-1<rows&&a-1>0&&b-1<columns&&b-1>0&&map[a-1][b-1]==0) {mark[a-1][b-1]=true;q.push{a-1,b-1}}
-	if(a+1<rows&&a+1>0&&b+1<columns&&b+1>0&&map[a+1][b+1]==0) {mark[a+1][b+1]=true;q.push{a+1,b+1}}
-	if(a-1<rows&&a-1>0&&b+1<columns&&b+1>0&&map[a-1][b+1]==0) {mark[a-1][b+1]=true;q.push{a-1,b+1}}
-	if(a+1<rows&&a+1>0&&b-1<columns&&b-1>0&&map[a+1][b-1]==0) {mark[a+1][b-1]=true;q.push{a+1,b-1}}
+	if(a-1<rows && a-1>0&&b<columns&&b>0&&map[a-1][b]==0) {mark[a-1][b]=true;q.push({a-1,b});}
+	if(a+1<rows&&a+1>0&&b<columns&&b>0&&map[a+1][b]==0) {mark[a+1][b]=true;q.push({a+1,b});}
+	if(a<rows&&a>0&&b-1<columns&&b-1>0&&map[a][b-1]==0) {mark[a][b-1]=true;q.push({a,b-1});}
+	if(a<rows&&a>0&&b+1<columns&&b+1>0&&map[a][b+1]==0) {mark[a][b+1]=true;q.push({a,b+1});}
+	if(a-1<rows&&a-1>0&&b-1<columns&&b-1>0&&map[a-1][b-1]==0) {mark[a-1][b-1]=true;q.push({a-1,b-1});}
+	if(a+1<rows&&a+1>0&&b+1<columns&&b+1>0&&map[a+1][b+1]==0) {mark[a+1][b+1]=true;q.push({a+1,b+1});}
+	if(a-1<rows&&a-1>0&&b+1<columns&&b+1>0&&map[a-1][b+1]==0) {mark[a-1][b+1]=true;q.push({a-1,b+1});}
+	if(a+1<rows&&a+1>0&&b-1<columns&&b-1>0&&map[a+1][b-1]==0) {mark[a+1][b-1]=true;q.push({a+1,b-1});}
 
 }
 
@@ -36,7 +37,7 @@ void bfs(){
 	// adj(x1,y1);
 	pair <int,int> tempPrev ={x1,y1};
 	while(!q.isEmpty()){
-		pair<int,int> t=q.top();
+		pair<int,int> t=q.front();
 		q.pop();
 		prev[t.first][t.second]=tempPrev;
 		adj(t.first,t.second);
@@ -66,7 +67,6 @@ int main(){
 	cin >> y2;
 
 
-	int rows ,columns;
 
 	char c;
 
@@ -122,10 +122,7 @@ int main(){
 		}cout <<endl;
 	}
 
-	// //bfs !!
-	// string temp;
-	// cin >> temp;
-	// // bfs();
+
 
 
 	return 0;
